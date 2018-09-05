@@ -79,13 +79,33 @@
 
   end
 
-  config.vm.define "agent" do |agent|
+  config.vm.define "ubuntu2" do |ubuntu2|
     config.vm.box = "reconz/xenial-16.04"
-    agent.vm.hostname = 'agent'
+    agent.vm.hostname = 'ubuntu2'
     agent.vm.box_url = "reconz/xenial-16.04"
 
     agent.vm.network "public_network"
     agent.vm.network :forwarded_port, guest: 22, host: 10222, id: "ssh"
+
+    end
+
+  config.vm.define "ubuntu3" do |ubuntu3|
+    config.vm.box = "ubuntu/xenial64"
+    agent.vm.hostname = 'ubuntu3'
+    agent.vm.box_url = "ubuntu/xenial64"
+
+    agent.vm.network "public_network"
+    agent.vm.network :forwarded_port, guest: 22, host: 10223, id: "ssh"
+
+    end
+
+  config.vm.define "centos7" do |centos7|
+    config.vm.box = "centos/7"
+    agent.vm.hostname = 'centos7'
+    agent.vm.box_url = "centos/7"
+
+    agent.vm.network "public_network"
+    agent.vm.network :forwarded_port, guest: 22, host: 10224, id: "ssh"
 
     end
 
